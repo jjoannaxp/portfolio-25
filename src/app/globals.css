@@ -1,33 +1,78 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f4f4;
+  --foreground: #031331;
+  --red: #960316;
+  --gray: #969696;
+  --gray-800: #616161;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "Apercu Mono";
+  src: url("/fonts/ApercuMono.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 html,
 body {
   max-width: 100vw;
+  height: 100%;
   overflow-x: hidden;
+  font-family: "DM Sans", serif;
+
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 10%, transparent 5%) 0
+      0,
+    /* Dots */
+      linear-gradient(rgba(253, 253, 253, 0.3), rgba(253, 253, 253, 0.3)),
+    url("/paper-texture.png") repeat;
+  background-position: 0 0;
+  background-size: 20px 20px, 100%, cover;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 30px 80px;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: end;
+  align-items: baseline;
+  font-family: "Apercu Mono", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.links a {
+  color: var(--gray);
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: var(--foreground);
+}
+
+.links a.active {
+  color: var(--red);
+  font-weight: bold;
 }
 
 a {
@@ -39,4 +84,60 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.hero {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 0px, 48px;
+  width: 60vw;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-8%, -32%);
+  background-image: url("/logo-no-bg.svg");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  opacity: 0.02;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: blur(2px);
+}
+
+#hero-title {
+  font-size: 56px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+#hero-title #name {
+  font-weight: bold;
+  color: var(--red);
+}
+
+#tagline {
+  font-size: 40px;
+}
+
+.red {
+  color: var(--red);
+}
+
+.mono{
+  font-family: "Apercu Mono";
+}
+
+#statuses{
+  color: var(--gray-800);
+  display:flex;
+  flex-direction: column;
+  gap: 16px;
 }
